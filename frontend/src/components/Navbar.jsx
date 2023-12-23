@@ -1,5 +1,7 @@
 import React from 'react'
 import { CiSearch } from "react-icons/ci";
+import { Link } from 'react-router-dom';
+
 // import {Link}
 const Navbar = () => {
   return (
@@ -11,8 +13,8 @@ const Navbar = () => {
       </div>
       
       <div className='flex items-center justify-between space-x-20'>
-        <a href="" className='text-lg font-bold text-white '>Login</a>
-        <a href=""  className='text-lg font-bold  text-white  '>Signup</a>
+      <Link className="underline text-black" to={'/register'}>Create Account</Link>
+      <Link className="underline text-black" to={'/login'}>Login</Link>
       </div>
     </nav>
   )
