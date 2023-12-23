@@ -5,10 +5,7 @@ const passport=require('passport-oauth2')
 
 
 
-router.get('/login', () => {
-    passport.use(new OAuth2Strategy({
-        autho
-    }))
-})
+router.route()
+router.route('/register').get(registerUser);
 
 module.exports = router;
