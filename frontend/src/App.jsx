@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
 import Gunaso from './pages/Gunaso'
 import Sujhab from './pages/Sujhab'
+import Registerpage from './Registerpage'
+import Profilepage from './Profilepage'
+import  axios  from 'axios'
+axios.defaults.baseURL = 'http://localhost:3000'; 
+axios.defaults.withCredentials=true;
 
 Home
 function App() {
@@ -16,8 +17,8 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path='/' element={<Home/>} />
-      <Route path='/login' element={<Login/>} />
-      <Route path='/signup' element={<Signup/>} />
+      <Route path='/login' element={<Profilepage/>} />
+      <Route path='/register' element={<Registerpage/>} />
       <Route path='/gunaso' element={<Gunaso/>} />
       <Route path='/sujhab' element={<Sujhab/>} />
       </Routes>
