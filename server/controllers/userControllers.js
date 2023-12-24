@@ -2,42 +2,58 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const { generateToken } = require('../helpers/generateToken');
+const User = require('../models/userModel');
+const decodeToken = require('../helpers/decodeToken');
+const jwt = require('jsonwebtoken');
+
 
 
 exports.registerUser = async (req, res) => {
-    const { username, identity_number, password, email } = req.body;
+    const { name, email, password, identitynumber } = req.body;
+    console.log(req.body, "register");
+    console.log(identitynumber * 1);
+    // return;
+
+
     try {
-        if (!username || !identity_number || !password || !email) {
+        console.log("anurag");
+        if (!name || !email || !password || !identitynumber) {
             res.status(400).json({ msg: "Plese provide all the fiels" });
         }
 
         const newUser = await User.create({
-            username,
+            name,
             email,
             password:bcrypt.hashSync(password,8),
-            identity_number
+            identitynumber:identitynumber * 1
 
         });
+        console.log("user", newUser)
         res.json({ user: newUser });
 
 
         
     } catch (error) {
+        console.log(error);
         res.status(400).json({ msg: "Something went wrong during registration" });
     }
 }
 
 exports.loginUser = async (req, res) => {
-    const { username, password } = req.body;
-    // if (!username || !password) {
-    //     res.send()
-    // };
+    
+    const { email, password } = req.body;
+    console.log(req.body);
+    // return;
+     if ( !email || !password ) {
+            res.status(400).json({ msg: "Plese provide all the fields" });
+        }
     const userDoc = await User.findOne({ email });
     if (userDoc) {
         const isMatched = bcrypt.compareSync(password, userDoc.password);
         if (isMatched) {
-            const token = generateToken(userDoc);
-            res.cookie('token', token).json(userDoc);
+            const token = jwt.sign({ email: userDoc.email }, process.env.SECRET, { expiresIn: "2d" });
+            
+            res.json({ authtoken: token, success:"true" });
         }
 
     } else {
@@ -45,3 +61,10 @@ exports.loginUser = async (req, res) => {
     }
 }
 
+exports.getProfile = async (req, res) => {
+    const user = req.user;
+ 
+    res.json({ user: user, success: "true" });
+  
+  
+};

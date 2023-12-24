@@ -54,7 +54,7 @@ function Registerpage() {
                 </label>
                 <input
                   className="border rounded px-3 py-2 w-full"
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
                   placeholder="Enter your username"
