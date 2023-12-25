@@ -49,7 +49,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="relative flex pl-10 pr-10 justify-between items-center bg-blue-900 h-14 ">
+    <nav className="relative flex pl-10 pr-10 justify-between items-center bg-blue-900 h-20 ">
        <h1 className='text-white font-bold text-3xl'>CIVIC-CONNECT</h1>
       <div className=" relative flex w-72 size ">
         <CiSearch className="absolute text-3xl cursor-pointer pl-1" />
@@ -63,11 +63,12 @@ const Navbar = () => {
       <div className="flex items-center justify-between space-x-20">
         {user ? (
           <>
-            <div>{user}</div>
-            <RxAvatar />
-
-            <p className="cursor-pointer" onClick={logout}>
-              logout
+          <div className="flex">
+          <RxAvatar  className="text-white text-3xl"/>
+            <div className="text-white font-bold">{user}</div>
+          </div>
+            <p className="cursor-pointer font-bold   text-white" onClick={logout}>
+              Logout
             </p>
           </>
         ) : (

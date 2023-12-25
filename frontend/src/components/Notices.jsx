@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 const Notices = () => {
   const notices = [
@@ -68,6 +69,10 @@ const Notices = () => {
   ];
 
   return (
+    <> 
+     <Navbar/>
+  
+
     <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-300 to-pink-300">
       {/* Notices Section */}
       <section id="notices" className="container mx-auto p-8">
@@ -83,6 +88,7 @@ const Notices = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

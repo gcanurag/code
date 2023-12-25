@@ -9,15 +9,12 @@ import Profilepage from './Profilepage'
 import Form from './components/Form.jsx'
 import axios from 'axios';
 import Notices from './components/Notices'
-
-
+import Admindashboard from './pages/Admindashboard'
 
 axios.defaults.baseURL = 'http://localhost:3000'; 
 axios.defaults.withCredentials=true;
 
-
 function App() {
-  
   return (
     <BrowserRouter>
       <Routes>
@@ -28,7 +25,7 @@ function App() {
       <Route path='/gunaso' element={<Gunaso/>} />
       <Route path='/sujhab' element={<Sujhab/>} />
       <Route path='/notices' element={<Notices/>} />
-
+      <Route path='/adminpage' element={<Admindashboard/>} />
       </Routes>
     </BrowserRouter>
   )
