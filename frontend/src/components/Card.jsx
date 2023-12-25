@@ -110,9 +110,7 @@ const Card = () => {
       </div>
     </section>
   </div>
- 
   </>
-  
   );
 };
 

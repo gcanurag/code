@@ -26,6 +26,7 @@ function App() {
       <Route path='/sujhab' element={<Sujhab/>} />
       <Route path='/notices' element={<Notices/>} />
       <Route path='/adminpage' element={<Admindashboard/>} />
+      <Route path='/adminpage/:id' element={<Admindashboard/>} />
       </Routes>
     </BrowserRouter>
   )
