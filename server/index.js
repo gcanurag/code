@@ -4,10 +4,11 @@ const cors = require('cors');
 const { connect } = require('./dbConfig/dbConfig');
 require('dotenv').config();
 const authRoute = require('./routes/auth');
-
+const cookieParser = require('cookie-parser');
 
 
 //middlewares
+app.use(cookieParser());
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:5173'
@@ -22,10 +23,17 @@ app.use((req, res, next) => {
 app.use('', authRoute);
 
 
+app.get('/', (req, res) => {
+    res.send("hello");
+    const token = req.cookies.token
+    console.log(token,"this is token");
+})
 
 
 
-
+// app.get('/profile', async (req, res) => {
+//     console.log(req.cookies,"kingu");
+// })
 
 
 connect().then(() => 
