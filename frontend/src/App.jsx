@@ -10,6 +10,8 @@ import Form from './components/Form.jsx'
 import axios from 'axios';
 import Notices from './components/Notices'
 import Admindashboard from './pages/Admindashboard'
+import Singlecomplain from './pages/Singlecomplain.jsx'
+import Images from './components/Images'
 
 axios.defaults.baseURL = 'http://localhost:3000'; 
 axios.defaults.withCredentials=true;
@@ -26,7 +28,8 @@ function App() {
       <Route path='/sujhab' element={<Sujhab/>} />
       <Route path='/notices' element={<Notices/>} />
       <Route path='/adminpage' element={<Admindashboard/>} />
-      <Route path='/adminpage/:id' element={<Admindashboard/>} />
+      <Route path='/adminpage/:id/:title/:description/:email' element={<Singlecomplain/>} />
+      <Route path='/images' element={<Images/>} />
       </Routes>
     </BrowserRouter>
   )
