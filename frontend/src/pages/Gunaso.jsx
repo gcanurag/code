@@ -1,8 +1,12 @@
+import axios from 'axios'
 import React from 'react'
 
-const Gunaso = () => {
+const Gunaso = async() => {
+ 
   return (
-    <div>Gunaso</div>
+    <div>
+      hello
+    </div>
   )
 }
 
