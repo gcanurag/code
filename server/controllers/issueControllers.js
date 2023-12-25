@@ -7,6 +7,7 @@ const { generateToken } = require("../helpers/generateToken");
 const decodeToken = require("../helpers/decodeToken");
 const jwt = require("jsonwebtoken");
 const Complaint = require("../models/complainModel");
+const File = require("../models/imageModel");
 
 exports.issueComplain = async (req, res) => {
   try {
@@ -41,4 +42,18 @@ exports.renderAdminDashboard = async (req, res) => {
   } catch (error) {
     
   }
+}
+
+exports.renderUploadForm = async (req, res) => {
+  res.render("upload.ejs")
+}
+exports.uploadNotice = async (req, res) => {
+  const userId = req.userId;
+  // const body = req.body;
+  const fileName=req.file.filename
+  // console.log(req.file.filename);
+  const newfile = await File.create({
+    path:`${process.env.BASE_URL}/data/uploads/${fileName}`,
+    user: userId,
+  })
 }

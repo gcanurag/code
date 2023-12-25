@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 })
 app.use('', authRoute);
 app.use('', issueRoute);
+app.use(express.static("public/"))
 
 
 

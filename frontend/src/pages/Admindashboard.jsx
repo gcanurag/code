@@ -1,31 +1,23 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
+import axios from 'axios';
 
 const Admindashboard = () => {
-    const array = [
-      
-        {
-          id: 9,
-          title: 'Important Notice 9',
-          content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        },
-        {
-          id: 10,
-          title: 'Important Notice 10',
-          content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        },
-        {
-          id: 11,
-          title: 'Important Notice 11',
-          content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        },
-    
-        {
-          id: 12,
-          title: 'Important Notice 12',
-          content: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        }
-    ];
+  // let newData = [];
+  const [complain, setComplain] = useState([]);
+  const getComplainsfromServer = useCallback(async () => {
+    const {data} = await axios.get('/issueComplain');
+    const details = data.data;
+    await setComplain((newData) => [...newData, ...details]);
+    console.log(data.data, "data");
+    console.log(complain.length);
+  }, []);
+
+  useEffect(() => {
+    getComplainsfromServer();
+  }, []);
+
+  
 
     return (
         <>
@@ -37,10 +29,10 @@ const Admindashboard = () => {
               <h2 className="text-2xl font-bold mb-4 text-purple-800">Dashboard</h2>
               {/* Grid layout for notices */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {array.map((item) => (
-                  <div key={item.id} className="bg-white rounded-lg shadow-xl p-6">
+                {complain.map((item) => (
+                  <div key={item._id} className="bg-white rounded-lg shadow-xl p-6">
                     <h3 className="text-xl font-bold mb-2 text-purple-800">{item.title}</h3>
-                    <p className="text-gray-700">{item.content}</p>
+                    <p className="text-gray-700">{item.description}</p>
                   </div>
                 ))}
               </div>
