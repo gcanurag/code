@@ -68,3 +68,8 @@ exports.getProfile = async (req, res) => {
   
   
 };
+
+
+exports.logoutUser = async (req, res) => {
+    
+}

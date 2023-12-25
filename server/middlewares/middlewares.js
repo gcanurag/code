@@ -4,7 +4,8 @@ const User = require("../models/userModel");
 const decodeToken = require("../helpers/decodeToken");
 
 exports.isAuthenticated = async (req, res, next) => {
-    const token = req.header('auth-token');
+   try {
+     const token = req.header('auth-token');
     
     if (!token) {
        console.log("no tokennnnnnnn")
@@ -22,4 +23,9 @@ exports.isAuthenticated = async (req, res, next) => {
         // console.log(userExist,"userexist")
         next();
     }
+   } catch (error) {
+       // res.send()console
+       console.log(error);
+        return res.status(500).json({ message: "Internal Server Error" });
+   }
 }

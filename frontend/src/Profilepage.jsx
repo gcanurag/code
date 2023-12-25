@@ -17,7 +17,7 @@ function Profilepage() {
     // console.log(ev),"ev";
     try {
       const { data } = await axios.post("/login", { email, password });
-      console.log(data);
+      // console.log(data);
       if (data.authtoken) {
         alert("Login successful");
         setCookie("storedAuthtoken", data.authtoken, 7);  

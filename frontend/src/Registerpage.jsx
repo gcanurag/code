@@ -1,13 +1,15 @@
 
 import React from 'react'
 import axios from "axios";
-import {useState}from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Registerpage() {
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
-  const [identitynumber,setIdentitynumber] = useState('');
+  const [identitynumber, setIdentitynumber] = useState('');
+  const navigate = useNavigate();
 
   async function registerUser(ev) {
     ev.preventDefault();
@@ -19,6 +21,7 @@ function Registerpage() {
         identitynumber
       });
       alert('Registration successful. Now you can log in');
+      navigate('/');
     } catch (e) {
       alert('Registration failed. Please try again later');
     }
