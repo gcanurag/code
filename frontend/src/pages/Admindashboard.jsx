@@ -1,7 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios';
+
 import { Link } from 'react-router-dom';
+
+
 
 const Admindashboard = () => {
   // let newData = [];
@@ -18,6 +21,7 @@ const Admindashboard = () => {
     getComplainsfromServer();
   }, []);
 
+
     return (
         <>
           <Navbar />
@@ -29,8 +33,10 @@ const Admindashboard = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {complain.map((item) => (
                   <div key={item._id} className="bg-white rounded-lg shadow-xl p-6">
+
                     <Link to={`/adminpage/${ item._id}/${item.title}/${item.description}/${item.email}`}> <h3 className="text-xl cursor-pointer font-bold mb-2 text-purple-800">{item.title}</h3></Link>
                     <p className="text-gray-700">{item.description.slice(0,30)+'..'}</p>
+
                   </div>
                 ))}
               </div>
