@@ -54,8 +54,10 @@ const Card = () => {
     setDropdownOpen(!isDropdownOpen);
   };
  
-  
   return (
+    
+    <>
+
     <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-300 to-pink-300">
     {/* Notices Section with Dropdown */}
     <section id="notices" className="container mx-auto p-8 relative">
@@ -108,6 +110,9 @@ const Card = () => {
       </div>
     </section>
   </div>
+ 
+  </>
+  
   );
 };
 
