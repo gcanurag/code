@@ -73,3 +73,13 @@ exports.getProfile = async (req, res) => {
 exports.logoutUser = async (req, res) => {
     
 }
+
+
+exports.adminDashboard = async (req, res) => {
+    
+    const user = await User.findOne({
+        email:email
+    })
+}
+
+
