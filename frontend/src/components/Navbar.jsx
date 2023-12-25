@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
 import UserContext from "../UserContext";
 import { getCookie } from "../lib/cookieGetterSetter";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { RxAvatar } from "react-icons/rx";
 
 const Navbar = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
 
   return (
     <nav className="relative flex pl-10 pr-10 justify-between items-center bg-blue-900 h-20 ">
-       <h1 className='text-white font-bold text-3xl'>CIVIC-CONNECT</h1>
+      <Link to="/"  className='text-white font-bold text-3xl'>CIVIC-CONNECT</Link>
       <div className=" relative flex w-72 size ">
         <CiSearch className="absolute text-3xl cursor-pointer pl-1" />
         <input

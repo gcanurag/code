@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaTwitter } from 'react-icons/fa'; // Assuming you have installed react-icons
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -17,13 +18,18 @@ const Footer = () => {
         </div>
 
         {/* Address */}
-        <div>
+        <div className='flex'>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-red-400">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+        </svg>
+
           <a
-            href="https://www.google.com/maps/place/Your+Company+Address"
+            href="https://www.google.com/maps/place/Institute+of+Engineering,+Pulchowk+Campus/@27.6810958,85.3159199,17z/data=!4m14!1m7!3m6!1s0x39eb19cbf6b89eb7:0x951b3c8ac733e3ec!2sInstitute+of+Engineering,+Pulchowk+Campus!8m2!3d27.6810911!4d85.3184948!16s%2Fg%2F11c494jtbg!3m5!1s0x39eb19cbf6b89eb7:0x951b3c8ac733e3ec!8m2!3d27.6810911!4d85.3184948!16s%2Fg%2F11c494jtbg?entry=ttu"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Your Company Address
+           Pulchowk, Lalitpur Nepal
           </a>
         </div>
 
@@ -43,9 +49,15 @@ const Footer = () => {
 
       {/* Additional Content */}
       <div>
-        <p>Connecting people with resources.</p>
-        <p>&copy; 2023 CIVIC-CONNECT. All rights reserved.</p>
-      </div>
+  <p>Connecting people with resources.</p>
+  <div>
+    <p>&copy; 2023</p>
+    <div>
+      <Link to='/'><p>CIVIC-CONNECT</p></Link>
+    <p>All rights reserved.</p></div>
+  </div>
+</div>
+
     </footer>
   );
 };
