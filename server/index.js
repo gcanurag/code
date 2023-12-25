@@ -4,6 +4,7 @@ const cors = require('cors');
 const { connect } = require('./dbConfig/dbConfig');
 require('dotenv').config();
 const authRoute = require('./routes/auth');
+const issueRoute = require('./routes/issueRoutes');
 const cookieParser = require('cookie-parser');
 
 
@@ -21,6 +22,8 @@ app.use((req, res, next) => {
     next();
 })
 app.use('', authRoute);
+app.use('', issueRoute);
+
 
 
 app.get('/', (req, res) => {
@@ -29,11 +32,6 @@ app.get('/', (req, res) => {
     console.log(token,"this is token");
 })
 
-
-
-// app.get('/profile', async (req, res) => {
-//     console.log(req.cookies,"kingu");
-// })
 
 
 connect().then(() => 
