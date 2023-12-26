@@ -5,10 +5,11 @@ const decodeToken = require("../helpers/decodeToken");
 
 exports.isAuthenticated = async (req, res, next) => {
    try {
-     const token = req.header('auth-token') || res.cookies.storedAuthtoken;
+       const token = req.header('auth-token');
+      
     
     if (!token) {
-       console.log("no tokennnnnnnn")
+       console.log("no token")
     }
    const decryptedResult = await  decodeToken(token)
    const userExist = await User.findOne({

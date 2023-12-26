@@ -33,16 +33,22 @@ const Navbar = () => {
     } catch (error) {
       console.log(error, "error");
     }
-  }, []);
+  }, [user]);
 
   const logout = async () => {
     try {
-      document.cookie.split(";").forEach(function (c) {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-      });
-      navigate("/");
+    await Promise.all(
+      document.cookie.split(";").map((cookie) => {
+        const trimmedCookie = cookie.replace(/^ +/, "");
+        const [name, value] = trimmedCookie.split("=");
+        return document.cookie = `${name}=;expires=${new Date(0).toUTCString()};path=/`;
+      })
+    );
+
+      setTimeout(() => {
+        console.log("Cookies cleared");
+        navigate("/");
+      }, 3000);
     } catch (error) {
       console.log(error);
     }

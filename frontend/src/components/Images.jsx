@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 const Images = () => {
@@ -29,6 +30,7 @@ const Images = () => {
           alert("Please fill out both title and description before submitting.");
         }
       };
+
   return (
     <div>
       <div className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-100 via-purple-300 to-pink-300 p-8">
@@ -38,7 +40,9 @@ const Images = () => {
             <div className="bg-white p-6 rounded-lg mb-4 w-full">
               <h2 className="text-2xl font-bold mb-4">Insert your image here.</h2>
               {/* Add login form components here */}
+
               <form  className="flex flex-col">
+
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
@@ -52,9 +56,11 @@ const Images = () => {
                     id="title"
                     name="title"
                     placeholder="Enter your title"
+
                   value={formData.description}
 
                     onChange={handleChange}
+
                   />
                 </div>
                 <div className="mb-4">
@@ -65,9 +71,11 @@ const Images = () => {
                     Upload your document:
                   </label>
                   <input
+
                    type="file"
                    id="image"
                    name="image"
+
                   />
                 </div>
                 <button
