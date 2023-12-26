@@ -29,7 +29,7 @@ const Form = () => {
         
       );
       alert("Ready to file complain?");
-      window.location.href = "/"; //Redirect me to the homepage.
+      window.location.href = "/home"; //Redirect me to the homepage.
     } else {
       alert("Please fill out both title and description before submitting.");
     }

@@ -23,7 +23,7 @@ function Profilepage() {
         setCookie("storedAuthtoken", data.authtoken, 7);  
         setName("");
         setPassword("");
-        navigate("/");
+        navigate("/home");
         setUser(user);
       }
 
