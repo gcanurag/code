@@ -13,15 +13,17 @@ import SingleNoticepage from './pages/SingleNoticepage'
 import Admindashboard from './pages/Admindashboard'
 import Singlecomplain from './pages/Singlecomplain.jsx'
 import Images from './components/Images'
+import Landingpage from './components/Landingpage.jsx'
 
 axios.defaults.baseURL = 'http://localhost:3000'; 
 axios.defaults.withCredentials=true;
 
 function App() {
   return (
-    <BrowserRouter>
+    
       <Routes>
-      <Route path='/' element={<Home/>} />
+      <Route path='/' element={<Landingpage/>} />
+      <Route path='/home' element={<Home/>} />
       <Route path='/form' element={<Form/>} />
       <Route path='/login' element={<Profilepage/>} />
       <Route path='/register' element={<Registerpage/>} />
@@ -33,7 +35,7 @@ function App() {
       <Route path='/adminpage/:id/:title/:description/:email' element={<Singlecomplain/>} />
       <Route path='/images' element={<Images/>} />
       </Routes>
-    </BrowserRouter>
+    
   )
 }
 
