@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import { getCookie, setCookie } from "../lib/cookieGetterSetter";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
+import React, { useState } from 'react';
 
 const Images = () => {
-  const navigate = useNavigate();
-  const cookie = getCookie("storedAuthtoken");
-
-  const [title, setTitle] = useState("");
-  const [file, setFile] = useState(null);
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("image", file);
-      formData.append("title", title);
-
-      const {data} = await axios.post("/uploadNotice", formData, {
-        headers: {
-          "auth-token": cookie,
-          
-        },
+    const [formData, setFormData] = useState({
+        title: "",
+        
       });
-      navigate('/')
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    
+      const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formData.title) {
+          const data = axios.post("/uploadNotice", 
+            formData,{ headers: {
+              "auth-token": cookie,
+            }}
+          
+            
+          );
+          alert("Ready to file complain?");
+          window.location.href = "/"; //Redirect me to the homepage.
+        } else {
+          alert("Please fill out both title and description before submitting.");
+        }
+      };
+
   return (
     <div>
       <div className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-100 via-purple-300 to-pink-300 p-8">
@@ -38,13 +38,11 @@ const Images = () => {
           <div className="w-full mb-8">{/* Inner card content */}</div>
           <div className="w-full max-w-md mx-auto">
             <div className="bg-white p-6 rounded-lg mb-4 w-full">
-              <h2 className="text-2xl font-bold mb-4">Complain Form</h2>
+              <h2 className="text-2xl font-bold mb-4">Insert your image here.</h2>
               {/* Add login form components here */}
-              <form
-                className="flex flex-col"
-                method="post"
-                encType="multipart/form-data"
-              >
+
+              <form  className="flex flex-col">
+
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
@@ -58,21 +56,26 @@ const Images = () => {
                     id="title"
                     name="title"
                     placeholder="Enter your title"
-                    onChange={(e)=>setTitle(e.target.value)}
+
+                  value={formData.description}
+
+                    onChange={handleChange}
+
                   />
                 </div>
                 <div className="mb-4">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="description"
+                   
                   >
                     Upload your document:
                   </label>
                   <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    onChange={handleFileChange}
+
+                   type="file"
+                   id="image"
+                   name="image"
+
                   />
                 </div>
                 <button

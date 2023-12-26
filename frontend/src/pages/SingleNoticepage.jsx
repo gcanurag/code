@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
 import { useParams } from 'react-router-dom';
 
-const Singlecomplain = ({  }) => {
-  const { title, description, email } = useParams();
+const SingleNoticepage = () => {
+    const {title, content}=useParams();
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-100 via-purple-300 to-pink-300">
+    <div>
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-100 via-purple-300 to-pink-300">
       {/* Notices Section */}
       <section className="flex items-center justify-center h-screen">
         <div className="container mx-auto p-12">
@@ -13,16 +14,14 @@ const Singlecomplain = ({  }) => {
             <h2 className="text-2xl font-bold mb-4 text-purple-800">{title}</h2>
             {/* Grid layout for notices */}
               <div className="bg-white rounded-lg  text-wrap  overflow-hidden shadow-xl p-6" >
-                <h3 className="text-xl mb-2 text-purple-800">{description}</h3>
-                <p className="text-gray-700"> Sent from: {email}</p>
+                <h3 className="text-xl mb-2 text-purple-800">{content}</h3>
             </div>
           </div>
         </div>
       </section>
     </div>
-  );
-  
-  
-};
+    </div>
+  )
+}
 
-export default Singlecomplain;
+export default SingleNoticepage

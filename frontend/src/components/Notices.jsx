@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 
 const Notices = () => {
   const notices = [
     {
       id: 1,
       title: 'Important Notice 1',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.jlkjlkjklj',
     },
     {
       id: 2,
@@ -81,8 +82,8 @@ const Notices = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {notices.map((notice) => (
             <div key={notice.id} className="bg-white rounded-lg shadow-xl p-6">
-              <h3 className="text-xl font-bold mb-2 text-purple-800">{notice.title}</h3>
-              <p className="text-gray-700">{notice.content}</p>
+                <Link to={`/notices/${ notice.id}/${notice.title}/${notice.content}/`}> <h3 className="text-xl cursor-pointer font-bold mb-2 text-purple-800">{notice.title}</h3></Link>
+                    <p className="text-gray-700">{notice.content.slice(0,30)+'..'}</p>       
             </div>
           ))}
         </div>
