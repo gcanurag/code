@@ -47,6 +47,7 @@ exports.renderAdminDashboard = async (req, res) => {
 exports.renderUploadForm = async (req, res) => {
   res.render("upload.ejs")
 }
+
 exports.uploadNotice = async (req, res) => {
   try {
     const userId = req.userId;
@@ -76,4 +77,10 @@ exports.uploadNotice = async (req, res) => {
       console.error("Error creating document:", error);
     }
   }
+}
+
+exports.showNotice = async (req, res) => {
+  const notices = await File.find();
+  console.log(notices)
+  res.json({ notices, success: true });
 }

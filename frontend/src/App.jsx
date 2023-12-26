@@ -19,7 +19,7 @@ axios.defaults.withCredentials=true;
 
 function App() {
   return (
-    <BrowserRouter>
+   
       <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/form' element={<Form/>} />
@@ -33,7 +33,7 @@ function App() {
       <Route path='/adminpage/:id/:title/:description/:email' element={<Singlecomplain/>} />
       <Route path='/images' element={<Images/>} />
       </Routes>
-    </BrowserRouter>
+   
   )
 }
 
