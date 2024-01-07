@@ -1,19 +1,10 @@
 
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './components/Home'
-import Gunaso from './pages/Gunaso'
-import Sujhab from './pages/Sujhab'
-import Registerpage from './Registerpage'
-import Profilepage from './Profilepage'
-import Form from './components/Form.jsx'
 import axios from 'axios';
-import Notices from './components/Notices'
-import SingleNoticepage from './pages/SingleNoticepage'
-import Admindashboard from './pages/Admindashboard'
-import Singlecomplain from './pages/Singlecomplain.jsx'
-import Images from './components/Images'
-import Landingpage from './components/Landingpage.jsx'
+import { Admin, Card, Complain, Footer, Form, Home, Images, Navbar, Notices, LogoutButton } from './components/index';
+import { Admindashboard, Chautari, Landingpage, Profilepage, SingleNoticepage, Singlecomplain, Registerpage } from './pages/Pages'
+
 
 axios.defaults.baseURL = 'http://localhost:3000'; 
 axios.defaults.withCredentials=true;
@@ -27,8 +18,8 @@ function App() {
       <Route path='/form' element={<Form/>} />
       <Route path='/login' element={<Profilepage/>} />
       <Route path='/register' element={<Registerpage/>} />
-      <Route path='/gunaso' element={<Gunaso/>} />
-      <Route path='/sujhab' element={<Sujhab/>} />
+      {/* <Route path='/gunaso' element={<Gunaso/>} />
+      <Route path='/sujhab' element={<Sujhab/>} /> */}
       <Route path='/notices' element={<Notices/>} />
       <Route path='/notices/:id/:title/:content' element={<SingleNoticepage/>} />
       <Route path='/adminpage' element={<Admindashboard/>} />

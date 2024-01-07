@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import UserContext from "../UserContext";
 import { getCookie } from "../lib/cookieGetterSetter";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -14,26 +13,26 @@ const Navbar = () => {
   const [ready, setReady] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    try {
-      const fetchdata = async () => {
-        const cookie = getCookie("storedAuthtoken");
+  // useEffect(() => {
+  //   try {
+  //     const fetchdata = async () => {
+  //       const cookie = getCookie("storedAuthtoken");
 
-        const { data } = await axios.get(`/profile`, {
-          headers: {
-            "auth-token": cookie,
-          },
-        });
+  //       const { data } = await axios.get(`/profile`, {
+  //         headers: {
+  //           "auth-token": cookie,
+  //         },
+  //       });
 
-        setReady(true);
-        setUser(data.user.name);
-        // console.log(user);
-      };
-      fetchdata();
-    } catch (error) {
-      console.log(error, "error");
-    }
-  }, [user]);
+  //       setReady(true);
+  //       setUser(data.user.name);
+  //       // console.log(user);
+  //     };
+  //     fetchdata();
+  //   } catch (error) {
+  //     console.log(error, "error");
+  //   }
+  // }, [user]);
 
   const logout = async () => {
     try {
@@ -53,6 +52,21 @@ const Navbar = () => {
       console.log(error);
     }
   };
+
+  const navigations = [
+    {
+      name: "Home",
+      to:'/'
+    },
+    {
+      name: "Login",
+      to:"/login"
+    },
+    {
+      name: "Signup",
+      to:'/signup'
+    }
+  ]
 
   return (
     <nav className="relative flex pl-10 pr-10 justify-between items-center bg-blue-900 h-20 ">

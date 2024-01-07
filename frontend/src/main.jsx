@@ -3,12 +3,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import { UserContextProvider } from "./UserContext.jsx";
+import { Provider } from "react-redux";
+import store from "./lib/authStore/store.js";
+import { UserContextProvider } from "./contexts/userContexts/UserContext.jsx";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </UserContextProvider>
+  <Provider store={store}>
+    <UserContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserContextProvider>
+  </Provider>
 );

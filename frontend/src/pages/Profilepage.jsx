@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
-import { getCookie, setCookie } from "./lib/cookieGetterSetter";
+import { getCookie, setCookie } from "../lib/cookieGetterSetter";
+import {Button} from '../components/index'
 
 
 function Profilepage() {
@@ -86,12 +87,9 @@ function Profilepage() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button
-                className="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-purple-700"
-                type="submit"
-              >
-                Login
-              </button>
+              <Button className="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-purple-700"
+                type="submit"  >Login</Button>
+
             </form>
           </div>
         </div>

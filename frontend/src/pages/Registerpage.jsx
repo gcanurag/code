@@ -3,6 +3,7 @@ import React from 'react'
 import axios from "axios";
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import {Button} from '../components/index'
 
 function Registerpage() {
   const [name,setName] = useState('');
@@ -90,12 +91,15 @@ function Registerpage() {
                   onChange={ev => setPassword(ev.target.value)}
                 />
               </div>
-              <button
+              {/* <button
                 className="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-purple-700"
                 type="submit"
               >
                 Create Account
-              </button>
+              </button> */}
+              <Button type="submit" className="bg-purple-800 text-white px-4 py-2 rounded-full hover:bg-purple-700">
+                 Create Account
+              </Button>
             </form>
           </div>
         </div>
